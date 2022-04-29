@@ -100,8 +100,8 @@ def action_distribution(id_):
     # Calc parameters of Gaussian distribution．
     mu_x = np.mean(x)
     mu_y = np.mean(y)
-    sigma_x = np.std(x)
-    sigma_y = np.std(y)
+    std_x = np.std(x)
+    std_y = np.std(y)
     covariance = (np.sum(x * y) / len(x)) - (mu_x * mu_y)
     r = random.randint(0, 255)
     g = random.randint(0, 255)
@@ -112,7 +112,7 @@ def action_distribution(id_):
     add_action.wait_for_server()
     msg = rgd_msgs.GaussianDistribution(
         mean_x=mu_x, mean_y=mu_y,
-        std_x=sigma_x, std_y=sigma_y,
+        std_x=std_x, std_y=std_y,
         covariance=covariance,
         r=r, g=g, b=b,
         id=id_
